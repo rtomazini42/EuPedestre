@@ -1,5 +1,5 @@
 # Eu Pedestre
-
+Disponível em: https://rtomazini.itch.io/eu-pedestre
 
 "Eu Pedestre" é um micro jogo que emula a estética dos clássicos jogos de Gameboy, incluindo gráficos pixelados, resolução reduzida e efeitos sonoros característicos. Inspirado no icônico "Frogger", o jogo coloca o jogador na pele de um pedestre tentando atravessar a rua no seu dia a dia. A proposta é enfrentar um desafio quase impossível, onde o objetivo é atravessar a rua de forma segura, desviando de veículos e obstáculos. A dificuldade é elevada para proporcionar uma experiência intensa e desafiadora, refletindo a luta diária de um pedestre em um ambiente urbano movimentado.
 
