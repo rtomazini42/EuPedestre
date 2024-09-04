@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=3 uid="uid://cbnmgjlg0oflm"]
+
+[ext_resource type="Script" path="res://gameplay.gd" id="1_4oikt"]
+[ext_resource type="Texture2D" uid="uid://3nabfo73pngp" path="res://assets/cochesOGArtb.png" id="1_65v24"]
+[ext_resource type="Texture2D" uid="uid://cplrf8lldg0vo" path="res://assets/1.png" id="3_2ivv4"]
+[ext_resource type="Script" path="res://Player.gd" id="4_8k3kv"]
+[ext_resource type="Texture2D" uid="uid://dfigmkjk2wiu8" path="res://assets/sang.png" id="5_tlt6e"]
+[ext_resource type="Texture2D" uid="uid://cty2o2gis1w1k" path="res://assets/prieze.png" id="5_u734r"]
+[ext_resource type="Texture2D" uid="uid://cnxic40frwwja" path="res://assets/pedestre.png" id="6_csr7j"]
+[ext_resource type="Texture2D" uid="uid://dunesx76031o6" path="res://assets/faixa.png" id="7_w0dit"]
+[ext_resource type="AudioStream" uid="uid://boj30vqew27ae" path="res://assets/Slower-Tempo-2020-03-22_-_8_Bit_Surf_-_FesliyanStudios.com_-_David_Renda.mp3" id="9_uqi0j"]
+[ext_resource type="AudioStream" uid="uid://dicihkceognrt" path="res://assets/Metal Slug rebel scream #7.mp3" id="10_pogti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e58t"]
+size = Vector2(10, 12)
+
+[sub_resource type="Curve2D" id="Curve2D_nnhcu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 18.2535, 0, 0, 0, 0, 1, 18.2535, 0, 0, 0, 0, -1, 37.5211, 0, 0, 0, 0, -1, 52.7324, 0, 0, 0, 0, 0, 61.8592, 0, 0, 0, 0, 0, 67.9437)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_e2knm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 453.26, 78.0931, 0, 0, 0, 0, 426.597, 79.5003, 0, 0, 0, 0, 426.597, 84.4251, 0, 0, 0, 0, 449.954, 93.0043, 0, 0, 0, 0, 426.597, 113.27)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd224"]
+size = Vector2(12, 11)
+
+[sub_resource type="SystemFont" id="SystemFont_1e3sp"]
+font_names = PackedStringArray("Retro Gaming")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4oikt")
+
+[node name="CochesOgArtb" type="Sprite2D" parent="."]
+position = Vector2(329, 79)
+texture = ExtResource("1_65v24")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(74, 138)
+texture = ExtResource("3_2ivv4")
+script = ExtResource("4_8k3kv")
+
+[node name="Ferido" type="Sprite2D" parent="Player"]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+position = Vector2(0, 1)
+texture = ExtResource("5_tlt6e")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_6e58t")
+
+[node name="Path2DEsquerdo" type="Path2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1, 0.986111)
+curve = SubResource("Curve2D_nnhcu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DEsquerdo"]
+position = Vector2(-1, 18.2535)
+
+[node name="Path2D2Direito" type="Path2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(200, -31)
+scale = Vector2(-0.0750122, 1.42138)
+curve = SubResource("Curve2D_e2knm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2Direito"]
+position = Vector2(453.26, 78.0931)
+rotation = 3.08886
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+offset_right = 160.0
+offset_bottom = 144.0
+metadata/_edit_lock_ = true
+
+[node name="Prieze" type="Sprite2D" parent="."]
+position = Vector2(75, 6)
+texture = ExtResource("5_u734r")
+
+[node name="SolArea" type="Area2D" parent="Prieze"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prieze/SolArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_qd224")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Pedestre" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 18)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre2" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 28)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre3" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 33)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre4" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 43)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre5" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 48)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre6" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 58)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre7" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 63)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre8" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 68)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre9" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 78)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre10" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 83)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre11" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 93)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre12" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 103)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre13" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74.5, 113)
+texture = ExtResource("6_csr7j")
+
+[node name="Pedestre14" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(74, 123)
+texture = ExtResource("6_csr7j")
+
+[node name="Faixa" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(37.5, 32.5)
+texture = ExtResource("7_w0dit")
+
+[node name="Faixa2" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(36.5, 45.5)
+texture = ExtResource("7_w0dit")
+
+[node name="Faixa3" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(31.5, 59.5)
+texture = ExtResource("7_w0dit")
+
+[node name="Faixa4" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(125.5, 88.5)
+texture = ExtResource("7_w0dit")
+flip_h = true
+
+[node name="Faixa5" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(124.5, 101.5)
+texture = ExtResource("7_w0dit")
+flip_h = true
+
+[node name="Faixa6" type="Sprite2D" parent="Node"]
+z_index = -1
+position = Vector2(119.5, 115.5)
+texture = ExtResource("7_w0dit")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 9.0
+offset_top = 24.0
+offset_right = 139.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_1e3sp")
+text = "AQUI
+NÃO É
+LUGAR
+DE PEDESTRE"
+horizontal_alignment = 1
+
+[node name="TimerMensagem" type="Timer" parent="Label"]
+unique_name_in_owner = true
+
+[node name="Label2" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 154.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_1e3sp")
+text = "Sobreviveu
+mais um dia
+até quando?"
+horizontal_alignment = 1
+
+[node name="TimerMensagem2" type="Timer" parent="Label2"]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-47, 176)
+stream = ExtResource("9_uqi0j")
+volume_db = -0.975
+autoplay = true
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-59, 158)
+stream = ExtResource("10_pogti")
+volume_db = 5.943
+
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Label/TimerMensagem" to="." method="_on_timer_mensagem_timeout"]
+[connection signal="timeout" from="Label2/TimerMensagem2" to="." method="_on_timer_mensagem_2_timeout"]
